@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.myoss</groupId>
+        <artifactId>phoenix-parent</artifactId>
+        <version>1.1.0.RELEASE</version>
+    </parent>
+
+    <groupId>com.github.myoss.maven.plugins</groupId>
+    <artifactId>phoenix-maven-plugin</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0.RELEASE</version>
+
+    <name>phoenix-maven-plugin</name>
+    <description>myoss open source project, phoenix maven plugin written in Java</description>
+    <url>https://github.com/myoss/phoenix-maven-plugin</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <scm>
+        <url>https://github.com/myoss/phoenix-maven-plugin</url>
+        <connection>scm:git:https://github.com/myoss/phoenix-maven-plugin.git</connection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jerry.Chen</name>
+            <email>jerry.myoss@gmail.com</email>
+            <organizationUrl>https://github.com/myoss</organizationUrl>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.version>3.5.4</maven.version>
+        <maven-plugin.version>3.5.2</maven-plugin.version>
+        <phoenix-core.version>1.1.0.RELEASE</phoenix-core.version>
+    </properties>
+
+    <modules>
+        <module>archetypes-maven-plugin</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${maven-plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.shared</groupId>
+            <artifactId>maven-shared-utils</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.myoss</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>${phoenix-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.apache.maven.plugin-testing</groupId>
+            <artifactId>maven-plugin-testing-harness</artifactId>
+            <version>3.3.0</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.plexus</groupId>
+                    <artifactId>plexus-container-default</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-compat</artifactId>
+            <version>${maven.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>${maven.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <includeEmptyDirs>true</includeEmptyDirs>
+                    <addDefaultExcludes>false</addDefaultExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
