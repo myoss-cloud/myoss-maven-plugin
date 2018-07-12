@@ -147,7 +147,8 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
 
         if (StringUtils.isNotBlank(configurationJson)) {
             configuration = JSON.parseObject(configurationJson, Configuration.class);
-        } else {
+        }
+        if (configuration == null) {
             configuration = new Configuration();
         }
         data.put("configuration", configuration);
@@ -175,6 +176,24 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
         String generateDate = DateFormatUtils.format(new Date(), "yyyy年M月d日 ah:mm:ss");
         generateDate = generateDate.replace("AM", "上午").replace("PM", "下午");
         configuration.setGenerateDate(generateDate);
+        convertConfigurationArgs(configuration);
+    }
+
+    /**
+     * 转换 {@link Configuration} 中的参数
+     *
+     * @param configuration 自定义配置信息
+     */
+    public void convertConfigurationArgs(Configuration configuration) {
+        for (Entry<String, Object> entry : configuration.getProperties().entrySet()) {
+            if ((entry.getValue() instanceof String)) {
+                if ("true".equals(entry.getValue())) {
+                    entry.setValue(true);
+                } else if ("false".equals(entry.getValue())) {
+                    entry.setValue(true);
+                }
+            }
+        }
     }
 
     /**
