@@ -78,7 +78,7 @@
             <artifactId>freemarker</artifactId>
         </dependency>
 
-        <!-- Test -->
+        <!-- test start -->
         <dependency>
             <groupId>org.apache.maven.plugin-testing</groupId>
             <artifactId>maven-plugin-testing-harness</artifactId>
@@ -108,6 +108,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- test end -->
     </dependencies>
 
     <dependencyManagement>
