@@ -16,6 +16,7 @@
     <packaging>jar</packaging>
 
     <properties>
+        <${artifactId}.version>${version}</${artifactId}.version>
         <phoenix-parent.version>${phoenixParentReleaseVersion}</phoenix-parent.version>
         <phoenix-core.version>${phoenixCoreReleaseVersion}</phoenix-core.version>
         <phoenix-mybatis.version>${phoenixMybatisReleaseVersion}</phoenix-mybatis.version>
@@ -49,6 +50,7 @@
             <dependency>
                 <groupId>${groupId}</groupId>
                 <artifactId>${module.name}</artifactId>
+                <version>${r"${"}${artifactId}.version${r"}"}</version>
             </dependency>
     </#if>
 </#list>
