@@ -13,7 +13,7 @@
     <artifactId>${artifactId}</artifactId>
     <name>${artifactId}</name>
     <version>${version}</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <${artifactId}.version>${version}</${artifactId}.version>
