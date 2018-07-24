@@ -58,23 +58,27 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
     /**
      * 模板文件夹名字
      */
-    public static final String        TEMPLATE_DIRECTORY = "spring-boot-single-project";
+    public static final String        TEMPLATE_DIRECTORY   = "spring-boot-single-project";
     /**
      * JAVA 文件路径
      */
-    public static final String[]      JAVA_PATH          = new String[] { "src/main/java".replace("/", File.separator),
-            "src/test/java".replace("/", File.separator) };
+    public static final String[]      JAVA_PATH            = new String[] {
+            "src/main/java".replace("/", File.separator), "src/test/java".replace("/", File.separator) };
     /**
      * JAR 文件
      */
-    public static final String        JAR                = "jar";
+    public static final String        JAR                  = "jar";
+    /**
+     * 临时占位文件，对于 git 仓库，如果目录是空的，此目录就会被忽略掉，导致某些空白的目录在服务器打包的时候，因为没有而无法被生成
+     */
+    public static final String        TMP_PLACEHOLDER_FILE = "tmp-placeholder-file.ignore";
 
-    protected boolean                 init               = false;
+    protected boolean                 init                 = false;
     protected TemplateEngine          templateEngine;
-    protected HashMap<String, Object> data               = new HashMap<>();
+    protected HashMap<String, Object> data                 = new HashMap<>();
     protected Path                    rootPath;
-    protected RestTemplate            restTemplate       = new RestTemplate();
-    protected String                  nexusRepositoryUrl = "http://repo1.maven.org/maven2";
+    protected RestTemplate            restTemplate         = new RestTemplate();
+    protected String                  nexusRepositoryUrl   = "http://repo1.maven.org/maven2";
 
     /**
      * 项目文件保存的目录
@@ -271,7 +275,9 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
             }
 
             FileUtil.createDirectories(targetFile.getParent());
-            if (templateFile.endsWith(templateSuffix)) {
+            if (templateFile.endsWith(TMP_PLACEHOLDER_FILE)) {
+                getLog().info("======> skipIgnoreFile: " + targetFile.getFileName());
+            } else if (templateFile.endsWith(templateSuffix)) {
                 // 模版引擎生成
                 String saveFilePath = StringUtils.removeEnd(targetFile.toString(), templateSuffix);
                 templateEngine.writer(separator + templateFile, saveFilePath, data);
@@ -339,9 +345,12 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
      * @param templateFiles 模版文件
      * @return 模版文件名字集合
      */
-    public Set<String> templateFilesRemoveDirectoryPath(String templateDirectory, Map<String, InputStream> templateFiles) {
+    public Set<String> templateFilesRemoveDirectoryPath(String templateDirectory,
+                                                        Map<String, InputStream> templateFiles) {
         String separator = templateDirectory + File.separator;
-        return templateFiles.entrySet().stream().map(entry -> StringUtils.substringAfter(entry.getKey(), separator))
+        return templateFiles.entrySet()
+                .stream()
+                .map(entry -> StringUtils.substringAfter(entry.getKey(), separator))
                 .collect(Collectors.toSet());
     }
 }
