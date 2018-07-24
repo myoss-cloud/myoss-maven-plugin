@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.github.myoss</groupId>
         <artifactId>phoenix-parent</artifactId>
-        <version>1.1.0.RELEASE</version>
+        <version>1.1.2.RELEASE</version>
     </parent>
 
     <groupId>com.github.myoss.maven.plugins</groupId>
@@ -44,7 +44,7 @@
     <properties>
         <maven.version>3.5.4</maven.version>
         <maven-plugin.version>3.5.2</maven-plugin.version>
-        <phoenix-core.version>1.1.0.RELEASE</phoenix-core.version>
+        <phoenix-core.version>1.1.2.RELEASE</phoenix-core.version>
     </properties>
 
     <modules>

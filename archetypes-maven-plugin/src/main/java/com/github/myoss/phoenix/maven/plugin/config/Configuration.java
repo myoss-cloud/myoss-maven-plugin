@@ -55,7 +55,4 @@ public class Configuration extends AbstractPropertyHolder {
      * 使用 Mybatis
      */
     private boolean useMybatis = false;
-
-    public Configuration() {
-    }
 }

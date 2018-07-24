@@ -42,6 +42,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.myoss.phoenix.core.constants.PhoenixConstants;
 import com.github.myoss.phoenix.core.exception.BizRuntimeException;
 import com.github.myoss.phoenix.core.lang.io.FileUtil;
+import com.github.myoss.phoenix.core.lang.io.StreamUtil;
 import com.github.myoss.phoenix.core.utils.MavenUtils;
 import com.github.myoss.phoenix.maven.plugin.config.Configuration;
 import com.github.myoss.phoenix.maven.plugin.template.TemplateEngine;
@@ -287,7 +288,7 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
             } else {
                 // 普通文件
                 try {
-                    String content = FileUtil.copyToString(sourceContent, PhoenixConstants.DEFAULT_CHARSET);
+                    String content = StreamUtil.copyToString(sourceContent, PhoenixConstants.DEFAULT_CHARSET);
                     FileUtils.writeStringToFile(targetFile.toFile(), content, PhoenixConstants.DEFAULT_CHARSET);
                 } catch (IOException e) {
                     throw new BizRuntimeException(e);
