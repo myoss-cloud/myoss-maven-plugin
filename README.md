@@ -1,6 +1,6 @@
 # Phoenix Maven Plugin
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.myoss.maven.plugins/phoenix-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.myoss/phoenix-maven-plugin/)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.myoss.maven.plugins/phoenix-maven-plugin.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.myoss/phoenix-maven-plugin/)
 [![GitHub release](https://img.shields.io/github/release/myoss-cloud/phoenix-maven-plugin.svg)](https://github.com/myoss-cloud/phoenix-maven-plugin/releases)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
