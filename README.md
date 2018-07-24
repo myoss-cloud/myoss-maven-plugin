@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.github.myoss.maven.plugins</groupId>
     <artifactId>phoenix-maven-plugin</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.1.RELEASE</version>
 </dependency>
 ```
 
@@ -30,7 +30,7 @@
 <dependency>
     <groupId>com.github.myoss.maven.plugins</groupId>
     <artifactId>archetypes-maven-plugin</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.1.RELEASE</version>
 </dependency>
 ```
 
