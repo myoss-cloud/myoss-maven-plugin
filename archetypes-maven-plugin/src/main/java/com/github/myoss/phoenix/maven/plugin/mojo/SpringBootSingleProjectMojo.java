@@ -226,16 +226,15 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
      */
     public Map<String, InputStream> getTemplateFiles(String templateDirectory, boolean excludeChildDirectory) {
         URL singleProject = getClass().getResource("/" + templateDirectory);
-        String singleProjectPath = singleProject.getPath();
-        getLog().info(singleProjectPath);
+        getLog().info(singleProject.toString());
         Map<String, InputStream> templateFiles;
         if (JAR.equals(singleProject.getProtocol())) {
             // 从 Jar 包中获取文件模版
-            templateFiles = FileUtil.getFilesFromJar("jar:" + singleProjectPath, templateDirectory,
-                    excludeChildDirectory, true);
+            templateFiles = FileUtil.getFilesFromJar(singleProject, templateDirectory, excludeChildDirectory, true);
         } else {
             // 从 class 目录中获取文件模板
-            templateFiles = FileUtil.getFilesFromDirectory(singleProjectPath, excludeChildDirectory, true);
+            Path path = FileUtil.toPath(singleProject);
+            templateFiles = FileUtil.getFilesFromDirectory(path, excludeChildDirectory, true);
         }
         return templateFiles;
     }
