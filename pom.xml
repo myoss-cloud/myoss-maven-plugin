@@ -12,7 +12,7 @@
     <groupId>com.github.myoss.maven.plugins</groupId>
     <artifactId>phoenix-maven-plugin</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2.RELEASE</version>
 
     <name>phoenix-maven-plugin</name>
     <description>myoss open source project, phoenix maven plugin written in Java</description>
@@ -44,7 +44,7 @@
     <properties>
         <maven.version>3.5.4</maven.version>
         <maven-plugin.version>3.5.2</maven-plugin.version>
-        <phoenix-core.version>1.1.3-SNAPSHOT</phoenix-core.version>
+        <phoenix-core.version>1.1.3.RELEASE</phoenix-core.version>
     </properties>
 
     <modules>
