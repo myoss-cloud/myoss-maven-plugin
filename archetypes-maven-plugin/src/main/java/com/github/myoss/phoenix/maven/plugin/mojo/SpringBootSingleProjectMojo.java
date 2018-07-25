@@ -22,8 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -32,7 +30,6 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -54,32 +51,32 @@ import com.github.myoss.phoenix.maven.plugin.template.impl.FreemarkerTemplateImp
  * @author Jerry.Chen
  * @since 2018年7月2日 上午11:55:22
  */
-@Mojo(name = "springBootSingleProject")
+@Mojo(name = "springBootSingleProject", requiresProject = false)
 public class SpringBootSingleProjectMojo extends AbstractMojo {
     /**
      * 模板文件夹名字
      */
-    public static final String        TEMPLATE_DIRECTORY   = "spring-boot-single-project";
+    public static final String        TEMPLATE_DIRECTORY            = "spring-boot-single-project";
     /**
      * JAVA 文件路径
      */
-    public static final String[]      JAVA_PATH            = new String[] {
-            "src/main/java".replace("/", File.separator), "src/test/java".replace("/", File.separator) };
+    public static final String[]      JAVA_PATH                     = new String[] { "src/main/java", "src/test/java" };
     /**
      * JAR 文件
      */
-    public static final String        JAR                  = "jar";
+    public static final String        JAR                           = "jar";
     /**
      * 临时占位文件，对于 git 仓库，如果目录是空的，此目录就会被忽略掉，导致某些空白的目录在服务器打包的时候，因为没有而无法被生成
      */
-    public static final String        TMP_PLACEHOLDER_FILE = "tmp-placeholder-file.ignore";
+    public static final String        TMP_PLACEHOLDER_FILE          = "tmp-placeholder-file.ignore";
 
-    protected boolean                 init                 = false;
+    protected boolean                 init                          = false;
     protected TemplateEngine          templateEngine;
-    protected HashMap<String, Object> data                 = new HashMap<>();
+    protected HashMap<String, Object> data                          = new HashMap<>();
     protected Path                    rootPath;
-    protected RestTemplate            restTemplate         = new RestTemplate();
-    protected String                  nexusRepositoryUrl   = "http://repo1.maven.org/maven2";
+    protected boolean                 skipFindPhoenixReleaseVersion = false;
+    protected RestTemplate            restTemplate                  = new RestTemplate();
+    protected String                  nexusRepositoryUrl            = "http://repo1.maven.org/maven2";
 
     /**
      * 项目文件保存的目录
@@ -162,25 +159,20 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
         data.put("version", version);
         data.put("package", rootPackageName);
 
-        String phoenixParentReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
-                "com.github.myoss", "phoenix-parent");
-        data.put("phoenixParentReleaseVersion", phoenixParentReleaseVersion);
-        String phoenixCoreReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
-                "com.github.myoss", "phoenix-core");
-        data.put("phoenixCoreReleaseVersion", phoenixCoreReleaseVersion);
-        String phoenixMybatisReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
-                "com.github.myoss", "phoenix-mybatis");
-        data.put("phoenixMybatisReleaseVersion", phoenixMybatisReleaseVersion);
-
-        configuration.setTodayYear(String.valueOf(LocalDate.now().getYear()));
-        configuration.setAuthor(author);
-        if (StringUtils.isNotBlank(copyright)) {
-            copyright = StringUtils.replace(copyright, "${todayYear}", configuration.getTodayYear());
-            configuration.setCopyright(copyright);
+        if (!skipFindPhoenixReleaseVersion) {
+            String phoenixParentReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
+                    "com.github.myoss", "phoenix-parent");
+            data.put("phoenixParentReleaseVersion", phoenixParentReleaseVersion);
+            String phoenixCoreReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
+                    "com.github.myoss", "phoenix-core");
+            data.put("phoenixCoreReleaseVersion", phoenixCoreReleaseVersion);
+            String phoenixMybatisReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate,
+                    nexusRepositoryUrl, "com.github.myoss", "phoenix-mybatis");
+            data.put("phoenixMybatisReleaseVersion", phoenixMybatisReleaseVersion);
         }
-        String generateDate = DateFormatUtils.format(new Date(), "yyyy年M月d日 ah:mm:ss");
-        generateDate = generateDate.replace("AM", "上午").replace("PM", "下午");
-        configuration.setGenerateDate(generateDate);
+
+        configuration.setAuthor(author);
+        configuration.setCopyright(copyright);
         convertConfigurationArgs(configuration);
     }
 
@@ -261,9 +253,10 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
                               Map<String, InputStream> templateFiles, Path saveRootPath) {
         getLog().info("generate files save to path: " + saveRootPath);
         String templateSuffix = templateEngine.getTemplateSuffix();
-        String separator = templateDirectory + File.separator;
+        String separator = templateDirectory + "/";
         for (Entry<String, InputStream> entry : templateFiles.entrySet()) {
-            String sourceFile = entry.getKey();
+            // 替换 windows 文件分割符合为 unix 风格
+            String sourceFile = entry.getKey().replace("\\", "/");
             InputStream sourceContent = entry.getValue();
             getLog().info("process fileName: " + sourceFile);
             String templateFile = StringUtils.substringAfter(sourceFile, separator);
@@ -330,8 +323,7 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
     public Path resolveJavaPath(Path targetPath, String basePackage, String templateFile) {
         for (String item : JAVA_PATH) {
             if (templateFile.startsWith(item)) {
-                String replace = templateFile.replace(item,
-                        item + File.separator + basePackage.replace(".", File.separator));
+                String replace = templateFile.replace(item, item + "/" + basePackage.replace(".", "/"));
                 return targetPath.resolve(replace);
             }
         }
@@ -345,12 +337,10 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
      * @param templateFiles 模版文件
      * @return 模版文件名字集合
      */
-    public Set<String> templateFilesRemoveDirectoryPath(String templateDirectory,
-                                                        Map<String, InputStream> templateFiles) {
-        String separator = templateDirectory + File.separator;
-        return templateFiles.entrySet()
-                .stream()
-                .map(entry -> StringUtils.substringAfter(entry.getKey(), separator))
+    public Set<String> templateFilesRemoveDirectoryPath(String templateDirectory, Map<String, InputStream> templateFiles) {
+        String separator = templateDirectory + "/";
+        return templateFiles.entrySet().stream()
+                .map(entry -> StringUtils.substringAfter(entry.getKey().replace("\\", "/"), separator))
                 .collect(Collectors.toSet());
     }
 }

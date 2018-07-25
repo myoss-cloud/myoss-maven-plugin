@@ -17,7 +17,6 @@
 
 package com.github.myoss.phoenix.maven.plugin.mojo;
 
-import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
@@ -78,7 +77,7 @@ public class SpringBootMultiModuleProjectMojo extends SpringBootSingleProjectMoj
         generateFiles(data, rootTemplateDirectory, rootTemplateFiles, rootPath);
 
         // 生成子模块
-        String modulesTemplateDirectory = rootTemplateDirectory + File.separator + MODULES_TEMPLATE_DIRECTORY;
+        String modulesTemplateDirectory = rootTemplateDirectory + "/" + MODULES_TEMPLATE_DIRECTORY;
         generateSubModuleFiles(modulesTemplateDirectory, modules);
     }
 
@@ -112,7 +111,7 @@ public class SpringBootMultiModuleProjectMojo extends SpringBootSingleProjectMoj
     public Map<String, InputStream> generateSubModuleFiles(String modulesTemplateDirectory, List<Module> modules) {
         Map<String, InputStream> allTemplateFiles = new LinkedHashMap<>();
         for (Module module : modules) {
-            String moduleTemplateDirectory = modulesTemplateDirectory + File.separator + module.getModuleType();
+            String moduleTemplateDirectory = modulesTemplateDirectory + "/" + module.getModuleType();
             getLog().info("begin generate " + moduleTemplateDirectory);
             String moduleName = module.getName();
             Path moduleSavePath = rootPath.resolve(moduleName);

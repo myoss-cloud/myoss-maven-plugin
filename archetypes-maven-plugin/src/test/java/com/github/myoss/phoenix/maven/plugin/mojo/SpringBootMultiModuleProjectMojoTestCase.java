@@ -17,6 +17,9 @@
 
 package com.github.myoss.phoenix.maven.plugin.mojo;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
 /**
@@ -28,9 +31,10 @@ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
  */
 public class SpringBootMultiModuleProjectMojoTestCase extends AbstractMojoTestCase {
     public void testGenerate() throws Exception {
-        String pluginPom = getBasedir() + "/src/test/resources/spring-boot-multi-module-project-test/plugin-pom.xml";
+        Path pluginPom = Paths.get(getBasedir(),
+                "/src/test/resources/spring-boot-multi-module-project-test/plugin-pom.xml");
         SpringBootMultiModuleProjectMojo mojo = (SpringBootMultiModuleProjectMojo) lookupMojo(
-                "springBootMultiModuleProject", pluginPom);
+                "springBootMultiModuleProject", pluginPom.toString());
         assertNotNull(mojo);
         mojo.execute();
     }

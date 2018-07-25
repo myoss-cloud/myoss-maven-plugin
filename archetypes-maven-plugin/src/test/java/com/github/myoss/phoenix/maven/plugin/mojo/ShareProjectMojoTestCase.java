@@ -17,6 +17,9 @@
 
 package com.github.myoss.phoenix.maven.plugin.mojo;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
 import junit.framework.TestCase;
@@ -29,8 +32,8 @@ import junit.framework.TestCase;
  */
 public class ShareProjectMojoTestCase extends AbstractMojoTestCase {
     public void testGenerate() throws Exception {
-        String pluginPom = getBasedir() + "/src/test/resources/share-project-test/plugin-pom.xml";
-        ShareProjectMojo mojo = (ShareProjectMojo) lookupMojo("shareProject", pluginPom);
+        Path pluginPom = Paths.get(getBasedir(), "/src/test/resources/share-project-test/plugin-pom.xml");
+        ShareProjectMojo mojo = (ShareProjectMojo) lookupMojo("shareProject", pluginPom.toString());
         TestCase.assertNotNull(mojo);
         mojo.execute();
     }

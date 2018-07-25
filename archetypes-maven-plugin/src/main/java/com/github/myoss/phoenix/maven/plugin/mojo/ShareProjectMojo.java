@@ -28,7 +28,7 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author Jerry.Chen
  * @since 2018年7月9日 下午3:11:28
  */
-@Mojo(name = "shareProject")
+@Mojo(name = "shareProject", requiresProject = false)
 public class ShareProjectMojo extends SpringBootSingleProjectMojo {
     /**
      * 模板文件夹名字

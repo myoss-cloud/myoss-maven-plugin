@@ -17,6 +17,12 @@
 
 package com.github.myoss.phoenix.maven.plugin.config;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -55,4 +61,23 @@ public class Configuration extends AbstractPropertyHolder {
      * 使用 Mybatis
      */
     private boolean useMybatis = false;
+
+    /**
+     * 初始化自定义全局配置
+     */
+    public Configuration() {
+        this.setTodayYear(String.valueOf(LocalDate.now().getYear()));
+        String generateDate = DateFormatUtils.format(new Date(), "yyyy年M月d日 ah:mm:ss");
+        generateDate = generateDate.replace("AM", "上午").replace("PM", "下午");
+        this.setGenerateDate(generateDate);
+    }
+
+    /**
+     * 设置版权信息注释
+     *
+     * @param copyright 版权信息注释
+     */
+    public void setCopyright(String copyright) {
+        this.copyright = StringUtils.replace(copyright, "${todayYear}", this.getTodayYear());
+    }
 }
