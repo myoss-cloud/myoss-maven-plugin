@@ -23,7 +23,7 @@ import java.nio.file.Paths;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
 /**
- * {@link SpringBootSingleProjectMojo} 测试类，第一次运行，需要先执行
+ * {@link SpringBootMultiModuleProjectMojo} 测试类，第一次运行，需要先执行
  * <code>mvn clean package</code>
  *
  * @author Jerry.Chen
