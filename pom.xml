@@ -12,7 +12,7 @@
     <groupId>com.github.myoss.maven.plugins</groupId>
     <artifactId>phoenix-maven-plugin</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3.RELEASE</version>
 
     <name>phoenix-maven-plugin</name>
     <description>myoss open source project, phoenix maven plugin written in Java</description>
