@@ -9,7 +9,9 @@
         <version>${phoenixParentReleaseVersion}</version>
     </parent>
 
+<#if groupId != 'com.github.myoss'>
     <groupId>${groupId}</groupId>
+</#if>
     <artifactId>${artifactId}</artifactId>
     <name>${artifactId}</name>
     <version>${version}</version>
