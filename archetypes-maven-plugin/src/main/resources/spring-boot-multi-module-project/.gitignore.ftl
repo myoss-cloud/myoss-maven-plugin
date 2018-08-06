@@ -3,3 +3,9 @@ target/
 
 *.iml
 .idea/
+
+.settings/
+.classpath
+.project
+
+*.log
