@@ -30,12 +30,17 @@ import com.alibaba.fastjson.JSON;
 import com.github.myoss.phoenix.core.lang.io.FileUtil;
 import com.github.myoss.phoenix.maven.plugin.config.Module;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 生成 SpringBoot 多模块项目代码
  *
  * @author Jerry.Chen
  * @since 2018年7月9日 下午3:11:28
  */
+@Setter
+@Getter
 @Mojo(name = "springBootMultiModuleProject", requiresProject = false)
 public class SpringBootMultiModuleProjectMojo extends SpringBootSingleProjectMojo {
     /**

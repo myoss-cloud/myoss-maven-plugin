@@ -45,12 +45,17 @@ import com.github.myoss.phoenix.maven.plugin.config.Configuration;
 import com.github.myoss.phoenix.maven.plugin.template.TemplateEngine;
 import com.github.myoss.phoenix.maven.plugin.template.impl.FreemarkerTemplateImpl;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 生成 SpringBoot 单模块项目代码
  *
  * @author Jerry.Chen
  * @since 2018年7月2日 上午11:55:22
  */
+@Setter
+@Getter
 @Mojo(name = "springBootSingleProject", requiresProject = false)
 public class SpringBootSingleProjectMojo extends AbstractMojo {
     /**
@@ -166,8 +171,8 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
             String phoenixCoreReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
                     "com.github.myoss", "phoenix-core");
             data.put("phoenixCoreReleaseVersion", phoenixCoreReleaseVersion);
-            String phoenixMybatisReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate,
-                    nexusRepositoryUrl, "com.github.myoss", "phoenix-mybatis");
+            String phoenixMybatisReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
+                    "com.github.myoss", "phoenix-mybatis");
             data.put("phoenixMybatisReleaseVersion", phoenixMybatisReleaseVersion);
         }
 
@@ -337,9 +342,11 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
      * @param templateFiles 模版文件
      * @return 模版文件名字集合
      */
-    public Set<String> templateFilesRemoveDirectoryPath(String templateDirectory, Map<String, InputStream> templateFiles) {
+    public Set<String> templateFilesRemoveDirectoryPath(String templateDirectory,
+                                                        Map<String, InputStream> templateFiles) {
         String separator = templateDirectory + "/";
-        return templateFiles.entrySet().stream()
+        return templateFiles.entrySet()
+                .stream()
                 .map(entry -> StringUtils.substringAfter(entry.getKey().replace("\\", "/"), separator))
                 .collect(Collectors.toSet());
     }

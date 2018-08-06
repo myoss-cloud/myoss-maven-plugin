@@ -22,12 +22,17 @@ import java.util.Map;
 
 import org.apache.maven.plugins.annotations.Mojo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 生成 share 项目代码
  *
  * @author Jerry.Chen
  * @since 2018年7月9日 下午3:11:28
  */
+@Setter
+@Getter
 @Mojo(name = "shareProject", requiresProject = false)
 public class ShareProjectMojo extends SpringBootSingleProjectMojo {
     /**
