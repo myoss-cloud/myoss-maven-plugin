@@ -1,4 +1,4 @@
-# myoss Maven Plugin
+# Maven Plugin
 
 [![Maven Central](https://img.shields.io/maven-central/v/app.myoss.cloud.maven.plugins/myoss-maven-plugin.svg)](https://maven-badges.herokuapp.com/maven-central/app.myoss.cloud.maven.plugins/myoss-maven-plugin/)
 [![GitHub release](https://img.shields.io/github/release/myoss-cloud/myoss-maven-plugin.svg)](https://github.com/myoss-cloud/myoss-maven-plugin/releases)
@@ -13,7 +13,7 @@
 - [maven][1]
 - [the latest JAR][2]  
 
-[1]: http://repo1.maven.org/maven2/com/github/myoss/maven/plugins/myoss-maven-plugin/  
+[1]: http://repo1.maven.org/maven2/app/myoss/cloud/maven/plugins/myoss-maven-plugin/  
 [2]: https://search.maven.org/remote_content?g=app.myoss.cloud.maven.plugins&a=myoss-maven-plugin&v=LATEST
 
 ## Maven

@@ -12,6 +12,34 @@
     <artifactId>archetypes-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
+    <name>archetypes-maven-plugin</name>
+    <description>myoss open source project, maven plugin written in Java</description>
+    <url>https://github.com/myoss-cloud/myoss-maven-plugin</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <scm>
+        <url>https://github.com/myoss-cloud/myoss-maven-plugin</url>
+        <connection>scm:git:https://github.com/myoss-cloud/myoss-maven-plugin.git</connection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jerry.Chen</name>
+            <email>jerry.work@aliyun.com</email>
+            <organizationUrl>https://github.com/myoss-cloud</organizationUrl>
+            <url>https://github.com/myoss</url>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>app.myoss.cloud.boot</groupId>
