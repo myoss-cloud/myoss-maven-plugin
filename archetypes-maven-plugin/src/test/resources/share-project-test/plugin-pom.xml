@@ -2,14 +2,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.myoss.maven.plugins</groupId>
+                <groupId>app.myoss.cloud.maven.plugins</groupId>
                 <artifactId>archetypes-maven-plugin</artifactId>
                 <configuration>
                     <directory>${basedir}/target/test-classes/unit/share-project-test/buildDirectory</directory>
-                    <groupId>com.github.myoss</groupId>
+                    <groupId>app.myoss.cloud</groupId>
                     <artifactId>share-demo2</artifactId>
                     <version>1.0.0.RELEASE</version>
-                    <rootPackageName>com.github.myoss.demo2</rootPackageName>
+                    <rootPackageName>app.myoss.cloud.demo2</rootPackageName>
                     <author>Jerry.Chen</author>
                     <copyright>
                         Copyright 2018-${todayYear} https://github.com/myoss

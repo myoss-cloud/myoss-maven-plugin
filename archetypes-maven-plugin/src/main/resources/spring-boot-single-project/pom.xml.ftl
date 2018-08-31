@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.myoss</groupId>
-        <artifactId>phoenix-parent</artifactId>
-        <version>${phoenixParentReleaseVersion}</version>
+        <groupId>app.myoss.cloud</groupId>
+        <artifactId>spring-boot-parent</artifactId>
+        <version>${myossSpringBootParentReleaseVersion}</version>
     </parent>
 
-<#if groupId != 'com.github.myoss'>
+<#if groupId != 'app.myoss.cloud'>
     <groupId>${groupId}</groupId>
 </#if>
     <artifactId>${artifactId}</artifactId>
@@ -18,22 +18,21 @@
     <packaging>jar</packaging>
 
     <properties>
-        <phoenix-parent.version>${phoenixParentReleaseVersion}</phoenix-parent.version>
-        <phoenix-core.version>${phoenixCoreReleaseVersion}</phoenix-core.version>
-        <phoenix-mybatis.version>${phoenixMybatisReleaseVersion}</phoenix-mybatis.version>
     </properties>
 
     <dependencies>
         <!-- myoss cloud dependencies start -->
         <dependency>
-            <groupId>com.github.myoss</groupId>
-            <artifactId>phoenix-core</artifactId>
-            <version>${r"${phoenix-core.version}"}</version>
+            <groupId>app.myoss.cloud.boot</groupId>
+            <artifactId>myoss-starter-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>app.myoss.cloud.boot</groupId>
+            <artifactId>myoss-starter-web</artifactId>
         </dependency>
         <#if (configuration.useMybatis!false) != true><!--</#if><dependency>
-            <groupId>com.github.myoss</groupId>
-            <artifactId>phoenix-mybatis</artifactId>
-            <version>${r"${phoenix-mybatis.version}"}</version>
+            <groupId>app.myoss.cloud.mybatis</groupId>
+            <artifactId>myoss-mybatis</artifactId>
         </dependency><#if (configuration.useMybatis!false) != true>--></#if>
         <!-- myoss cloud dependencies end -->
     </dependencies>

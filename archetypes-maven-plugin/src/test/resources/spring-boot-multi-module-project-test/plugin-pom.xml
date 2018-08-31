@@ -2,16 +2,16 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.myoss.maven.plugins</groupId>
+                <groupId>app.myoss.cloud.maven.plugins</groupId>
                 <artifactId>archetypes-maven-plugin</artifactId>
                 <configuration>
                     <directory>
                         ${basedir}/target/test-classes/unit/spring-boot-multi-module-project-test/buildDirectory
                     </directory>
-                    <groupId>com.github.myoss</groupId>
+                    <groupId>app.myoss.cloud</groupId>
                     <artifactId>multi-module-demo3</artifactId>
                     <version>1.0.0.RELEASE</version>
-                    <rootPackageName>com.github.myoss.demo3</rootPackageName>
+                    <rootPackageName>app.myoss.cloud.demo3</rootPackageName>
                     <author>Jerry.Chen</author>
                     <copyright>
                         Copyright 2018-${todayYear} https://github.com/myoss
@@ -44,8 +44,8 @@
     </build>
 </project>
         <!--
-        mvn -X com.github.myoss.maven.plugins:archetypes-maven-plugin:1.0.0:springBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/phoenix-maven-plugin/target' \
-        -DgroupId=com.github.myoss -DartifactId=multi-module-demo3 -Dversion=1.0.0.RELEASE \
-        -DrootPackageName=com.github.myoss.demo3 -Dauthor=Jerry.Chen \
+        mvn -X app.myoss.cloud.maven.plugins:archetypes-maven-plugin:1.0.0:springBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/target' \
+        -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0.RELEASE \
+        -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen \
         -DmodulesJson='[{"name":"order-web","moduleType":"spring-boot"},{"name":"order-service","moduleType":"normal"}]'
         -->

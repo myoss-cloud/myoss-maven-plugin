@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.mojo;
+package app.myoss.cloud.maven.plugin.mojo;
 
 import java.io.InputStream;
 import java.util.Map;

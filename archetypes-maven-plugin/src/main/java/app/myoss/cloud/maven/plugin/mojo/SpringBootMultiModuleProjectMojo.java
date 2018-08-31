@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.mojo;
+package app.myoss.cloud.maven.plugin.mojo;
 
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -27,9 +27,9 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 import com.alibaba.fastjson.JSON;
-import com.github.myoss.phoenix.core.lang.io.FileUtil;
-import com.github.myoss.phoenix.maven.plugin.config.Module;
 
+import app.myoss.cloud.core.lang.io.FileUtil;
+import app.myoss.cloud.maven.plugin.config.Module;
 import lombok.Getter;
 import lombok.Setter;
 

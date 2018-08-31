@@ -18,7 +18,7 @@ mybatis:
     base-package: ${package}.component.mybatis
 
 </#if>
-phoenix:
+myoss-cloud:
   ok-http3:
     connection-pool:
       enabled: true

@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.template.impl;
+package app.myoss.cloud.maven.plugin.template.impl;
 
 import static freemarker.template.Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS;
 
@@ -25,10 +25,9 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Map;
 
-import com.github.myoss.phoenix.core.exception.BizRuntimeException;
-import com.github.myoss.phoenix.maven.plugin.config.Configuration;
-import com.github.myoss.phoenix.maven.plugin.template.TemplateEngine;
-
+import app.myoss.cloud.core.exception.BizRuntimeException;
+import app.myoss.cloud.maven.plugin.config.Configuration;
+import app.myoss.cloud.maven.plugin.template.TemplateEngine;
 import freemarker.template.Template;
 import lombok.Getter;
 
@@ -62,8 +61,8 @@ public class FreemarkerTemplateImpl implements TemplateEngine {
             template.process(data, new OutputStreamWriter(fileOutputStream, "UTF-8"));
             fileOutputStream.close();
         } catch (Exception ex) {
-            throw new BizRuntimeException("process [" + templatePath + "] writer to [" + outputPath
-                    + "] failed, \ndata: " + data, ex);
+            throw new BizRuntimeException(
+                    "process [" + templatePath + "] writer to [" + outputPath + "] failed, \ndata: " + data, ex);
         }
     }
 
@@ -73,8 +72,8 @@ public class FreemarkerTemplateImpl implements TemplateEngine {
             Template template = configuration.getTemplate(templatePath);
             template.process(data, output);
         } catch (Exception ex) {
-            throw new BizRuntimeException("process [" + templatePath + "] writer to [" + output.getClass()
-                    + "] failed, \ndata: " + data, ex);
+            throw new BizRuntimeException(
+                    "process [" + templatePath + "] writer to [" + output.getClass() + "] failed, \ndata: " + data, ex);
         }
     }
 }

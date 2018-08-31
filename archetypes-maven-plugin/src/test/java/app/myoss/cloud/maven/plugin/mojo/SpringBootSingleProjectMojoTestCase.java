@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.mojo;
+package app.myoss.cloud.maven.plugin.mojo;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,18 +23,17 @@ import java.nio.file.Paths;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
 /**
- * {@link SpringBootMultiModuleProjectMojo} 测试类，第一次运行，需要先执行
+ * {@link SpringBootSingleProjectMojo} 测试类，第一次运行，需要先执行
  * <code>mvn clean package</code>
  *
  * @author Jerry.Chen
  * @since 2018年7月2日 上午11:59:07
  */
-public class SpringBootMultiModuleProjectMojoTestCase extends AbstractMojoTestCase {
+public class SpringBootSingleProjectMojoTestCase extends AbstractMojoTestCase {
     public void testGenerate() throws Exception {
-        Path pluginPom = Paths.get(getBasedir(),
-                "/src/test/resources/spring-boot-multi-module-project-test/plugin-pom.xml");
-        SpringBootMultiModuleProjectMojo mojo = (SpringBootMultiModuleProjectMojo) lookupMojo(
-                "springBootMultiModuleProject", pluginPom.toString());
+        Path pluginPom = Paths.get(getBasedir(), "/src/test/resources/spring-boot-single-project-test/plugin-pom.xml");
+        SpringBootSingleProjectMojo mojo = (SpringBootSingleProjectMojo) lookupMojo("springBootSingleProject",
+                pluginPom.toString());
         assertNotNull(mojo);
         mojo.execute();
     }

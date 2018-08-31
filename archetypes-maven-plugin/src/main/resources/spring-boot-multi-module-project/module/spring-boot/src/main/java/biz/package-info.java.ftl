@@ -17,5 +17,5 @@
  * @author ${configuration.author}
  * @since ${configuration.generateDate}
  */
-package ${package}.auth.biz;
+package ${package}.biz;
 

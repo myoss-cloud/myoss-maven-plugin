@@ -4,7 +4,7 @@
     <property name="project.name" value="${artifactId}"/>
     <property name="project.name.monitor" value="${artifactId?replace("-", "")}"/>
 
-    <include resource="com/github/myoss/phoenix/core/log/logback/logback-file-appender.xml"/>
+    <include resource="app/myoss/cloud/apm/log/logback/logback-file-appender.xml"/>
     <#if configuration.useMybatis>
 
     <logger name="${package}.component.mybatis">

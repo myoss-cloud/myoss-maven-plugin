@@ -15,26 +15,26 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.mojo;
+package app.myoss.cloud.maven.plugin.mojo;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
+import junit.framework.TestCase;
+
 /**
- * {@link SpringBootSingleProjectMojo} 测试类，第一次运行，需要先执行
- * <code>mvn clean package</code>
+ * {@link ShareProjectMojo} 测试类，第一次运行，需要先执行 <code>mvn clean package</code>
  *
  * @author Jerry.Chen
- * @since 2018年7月2日 上午11:59:07
+ * @since 2018年7月9日 下午18:59:07
  */
-public class SpringBootSingleProjectMojoTestCase extends AbstractMojoTestCase {
+public class ShareProjectMojoTestCase extends AbstractMojoTestCase {
     public void testGenerate() throws Exception {
-        Path pluginPom = Paths.get(getBasedir(), "/src/test/resources/spring-boot-single-project-test/plugin-pom.xml");
-        SpringBootSingleProjectMojo mojo = (SpringBootSingleProjectMojo) lookupMojo("springBootSingleProject",
-                pluginPom.toString());
-        assertNotNull(mojo);
+        Path pluginPom = Paths.get(getBasedir(), "/src/test/resources/share-project-test/plugin-pom.xml");
+        ShareProjectMojo mojo = (ShareProjectMojo) lookupMojo("shareProject", pluginPom.toString());
+        TestCase.assertNotNull(mojo);
         mojo.execute();
     }
 }

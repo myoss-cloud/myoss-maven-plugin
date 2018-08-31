@@ -15,8 +15,7 @@ package ${package};
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.github.myoss.phoenix.core.spring.boot.BootApplication;
-
+import app.myoss.cloud.web.spring.boot.BootApplication;
 import lombok.extern.slf4j.Slf4j;
 
 

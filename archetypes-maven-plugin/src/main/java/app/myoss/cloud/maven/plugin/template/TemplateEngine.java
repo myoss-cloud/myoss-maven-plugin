@@ -15,12 +15,12 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.template;
+package app.myoss.cloud.maven.plugin.template;
 
 import java.io.Writer;
 import java.util.Map;
 
-import com.github.myoss.phoenix.maven.plugin.config.Configuration;
+import app.myoss.cloud.maven.plugin.config.Configuration;
 
 /**
  * 模版引擎接口

@@ -16,6 +16,13 @@
     </properties>
 
     <dependencies>
+        <!-- myoss cloud dependencies start -->
+        <dependency>
+            <groupId>app.myoss.cloud.boot</groupId>
+            <artifactId>myoss-starter-web</artifactId>
+        </dependency>
+        <!-- myoss cloud dependencies end -->
+
 <#list modules as module>
     <#if module.moduleType != "spring-boot">
         <dependency>

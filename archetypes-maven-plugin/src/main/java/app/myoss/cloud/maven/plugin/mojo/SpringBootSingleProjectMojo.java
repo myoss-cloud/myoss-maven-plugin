@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.mojo;
+package app.myoss.cloud.maven.plugin.mojo;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,15 +36,15 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSON;
-import com.github.myoss.phoenix.core.constants.PhoenixConstants;
-import com.github.myoss.phoenix.core.exception.BizRuntimeException;
-import com.github.myoss.phoenix.core.lang.io.FileUtil;
-import com.github.myoss.phoenix.core.lang.io.StreamUtil;
-import com.github.myoss.phoenix.core.utils.MavenUtils;
-import com.github.myoss.phoenix.maven.plugin.config.Configuration;
-import com.github.myoss.phoenix.maven.plugin.template.TemplateEngine;
-import com.github.myoss.phoenix.maven.plugin.template.impl.FreemarkerTemplateImpl;
 
+import app.myoss.cloud.core.constants.MyossConstants;
+import app.myoss.cloud.core.exception.BizRuntimeException;
+import app.myoss.cloud.core.lang.io.FileUtil;
+import app.myoss.cloud.core.lang.io.StreamUtil;
+import app.myoss.cloud.maven.plugin.config.Configuration;
+import app.myoss.cloud.maven.plugin.template.TemplateEngine;
+import app.myoss.cloud.maven.plugin.template.impl.FreemarkerTemplateImpl;
+import app.myoss.cloud.web.utils.MavenUtils;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -61,27 +61,27 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
     /**
      * 模板文件夹名字
      */
-    public static final String        TEMPLATE_DIRECTORY            = "spring-boot-single-project";
+    public static final String        TEMPLATE_DIRECTORY          = "spring-boot-single-project";
     /**
      * JAVA 文件路径
      */
-    public static final String[]      JAVA_PATH                     = new String[] { "src/main/java", "src/test/java" };
+    public static final String[]      JAVA_PATH                   = new String[] { "src/main/java", "src/test/java" };
     /**
      * JAR 文件
      */
-    public static final String        JAR                           = "jar";
+    public static final String        JAR                         = "jar";
     /**
      * 临时占位文件，对于 git 仓库，如果目录是空的，此目录就会被忽略掉，导致某些空白的目录在服务器打包的时候，因为没有而无法被生成
      */
-    public static final String        TMP_PLACEHOLDER_FILE          = "tmp-placeholder-file.ignore";
+    public static final String        TMP_PLACEHOLDER_FILE        = "tmp-placeholder-file.ignore";
 
-    protected boolean                 init                          = false;
+    protected boolean                 init                        = false;
     protected TemplateEngine          templateEngine;
-    protected HashMap<String, Object> data                          = new HashMap<>();
+    protected HashMap<String, Object> data                        = new HashMap<>();
     protected Path                    rootPath;
-    protected boolean                 skipFindPhoenixReleaseVersion = false;
-    protected RestTemplate            restTemplate                  = new RestTemplate();
-    protected String                  nexusRepositoryUrl            = "http://repo1.maven.org/maven2";
+    protected boolean                 skipFindMyossReleaseVersion = false;
+    protected RestTemplate            restTemplate                = new RestTemplate();
+    protected String                  nexusRepositoryUrl          = "http://repo1.maven.org/maven2";
 
     /**
      * 项目文件保存的目录
@@ -164,16 +164,10 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
         data.put("version", version);
         data.put("package", rootPackageName);
 
-        if (!skipFindPhoenixReleaseVersion) {
-            String phoenixParentReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
-                    "com.github.myoss", "phoenix-parent");
-            data.put("phoenixParentReleaseVersion", phoenixParentReleaseVersion);
-            String phoenixCoreReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
-                    "com.github.myoss", "phoenix-core");
-            data.put("phoenixCoreReleaseVersion", phoenixCoreReleaseVersion);
-            String phoenixMybatisReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate, nexusRepositoryUrl,
-                    "com.github.myoss", "phoenix-mybatis");
-            data.put("phoenixMybatisReleaseVersion", phoenixMybatisReleaseVersion);
+        if (!skipFindMyossReleaseVersion) {
+            String myossSpringBootParentReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate,
+                    nexusRepositoryUrl, "app.myoss.cloud", "spring-boot-parent");
+            data.put("myossSpringBootParentReleaseVersion", myossSpringBootParentReleaseVersion);
         }
 
         configuration.setAuthor(author);
@@ -285,8 +279,8 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
             } else {
                 // 普通文件
                 try {
-                    String content = StreamUtil.copyToString(sourceContent, PhoenixConstants.DEFAULT_CHARSET);
-                    FileUtils.writeStringToFile(targetFile.toFile(), content, PhoenixConstants.DEFAULT_CHARSET);
+                    String content = StreamUtil.copyToString(sourceContent, MyossConstants.DEFAULT_CHARSET);
+                    FileUtils.writeStringToFile(targetFile.toFile(), content, MyossConstants.DEFAULT_CHARSET);
                 } catch (IOException e) {
                     throw new BizRuntimeException(e);
                 }

@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.config;
+package app.myoss.cloud.maven.plugin.config;
 
 import java.time.LocalDate;
 import java.util.Date;

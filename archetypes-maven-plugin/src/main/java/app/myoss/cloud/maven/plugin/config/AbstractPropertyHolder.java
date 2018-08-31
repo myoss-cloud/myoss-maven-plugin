@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.myoss.phoenix.maven.plugin.config;
+package app.myoss.cloud.maven.plugin.config;
 
 import java.util.HashMap;
 import java.util.Map;
