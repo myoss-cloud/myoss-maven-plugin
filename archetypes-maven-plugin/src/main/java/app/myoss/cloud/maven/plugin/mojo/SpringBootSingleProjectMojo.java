@@ -186,7 +186,7 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
                 if ("true".equals(entry.getValue())) {
                     entry.setValue(true);
                 } else if ("false".equals(entry.getValue())) {
-                    entry.setValue(true);
+                    entry.setValue(false);
                 }
             }
         }
