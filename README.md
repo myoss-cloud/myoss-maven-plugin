@@ -22,7 +22,7 @@
 <dependency>
     <groupId>app.myoss.cloud.maven.plugins</groupId>
     <artifactId>myoss-maven-plugin</artifactId>
-    <version>2.0.1.RELEASE</version>
+    <version>2.0.2.RELEASE</version>
 </dependency>
 ```
 
@@ -30,7 +30,7 @@
 <dependency>
     <groupId>app.myoss.cloud.maven.plugins</groupId>
     <artifactId>archetypes-maven-plugin</artifactId>
-    <version>2.0.1.RELEASE</version>
+    <version>2.0.2.RELEASE</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@
 ### 生成 SpringBoot 单模块项目代码
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.1.RELEASE:springBootSingleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.2.RELEASE:springBootSingleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=spring-boot-single-project -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo1 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -50,7 +50,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.1.RELEASE:spring
 ### 生成 share 项目代码
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.1.RELEASE:shareProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.2.RELEASE:shareProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=share-project -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo2 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -59,7 +59,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.1.RELEASE:shareP
 ### 生成 SpringBoot 多模块项目代码
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.1.RELEASE:springBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.0.2.RELEASE:springBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
