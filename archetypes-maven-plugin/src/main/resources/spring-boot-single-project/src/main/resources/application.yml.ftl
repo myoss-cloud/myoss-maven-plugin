@@ -23,3 +23,4 @@ myoss-cloud:
     connection-pool:
       enabled: true
       connect-timeout: 5000
+      read-timeout: 5000
