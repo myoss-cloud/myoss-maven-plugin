@@ -166,7 +166,7 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
 
         if (!skipFindMyossReleaseVersion) {
             String myossSpringBootParentReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate,
-                    nexusRepositoryUrl, "app.myoss.cloud", "spring-boot-parent");
+                    nexusRepositoryUrl, "app.myoss.cloud", "myoss-spring-boot-parent");
             data.put("myossSpringBootParentReleaseVersion", myossSpringBootParentReleaseVersion);
         }
 
