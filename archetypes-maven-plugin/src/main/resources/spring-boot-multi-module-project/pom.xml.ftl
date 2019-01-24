@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>app.myoss.cloud</groupId>
-        <artifactId>spring-boot-parent</artifactId>
+        <artifactId>myoss-spring-boot-parent</artifactId>
         <version>${myossSpringBootParentReleaseVersion}</version>
     </parent>
 
