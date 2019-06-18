@@ -27,13 +27,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @SpringBootApplication
-public class RunApplication {
+public class ${JAVA_MAIN_ClASS} {
     /**
      * 项目启动类
      *
      * @param args 启动参数
      */
     public static void main(String[] args) {
-        BootApplication.run(log, RunApplication.class, args);
+        BootApplication.run(log, ${JAVA_MAIN_ClASS}.class, args);
     }
 }

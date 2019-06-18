@@ -23,16 +23,19 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSON;
@@ -41,6 +44,7 @@ import app.myoss.cloud.core.constants.MyossConstants;
 import app.myoss.cloud.core.exception.BizRuntimeException;
 import app.myoss.cloud.core.lang.io.FileUtil;
 import app.myoss.cloud.core.lang.io.StreamUtil;
+import app.myoss.cloud.core.utils.NameStyle;
 import app.myoss.cloud.maven.plugin.config.Configuration;
 import app.myoss.cloud.maven.plugin.template.TemplateEngine;
 import app.myoss.cloud.maven.plugin.template.impl.FreemarkerTemplateImpl;
@@ -74,6 +78,14 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
      * 临时占位文件，对于 git 仓库，如果目录是空的，此目录就会被忽略掉，导致某些空白的目录在服务器打包的时候，因为没有而无法被生成
      */
     public static final String        TMP_PLACEHOLDER_FILE        = "tmp-placeholder-file.ignore";
+    /**
+     * Java main class 文件名
+     */
+    public static final String        JAVA_MAIN_CLASS_FILE        = "JAVA-MAIN-ClASS.java.ftl";
+    /**
+     * Java main class name 模版文件变量名
+     */
+    public static final String        JAVA_MAIN_CLASS_NAME        = "JAVA_MAIN_ClASS";
 
     protected boolean                 init                        = false;
     protected TemplateEngine          templateEngine;
@@ -163,6 +175,7 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
         data.put("artifactId", artifactId);
         data.put("version", version);
         data.put("package", rootPackageName);
+        data.put(JAVA_MAIN_CLASS_NAME, getJavaMainClassName());
 
         if (!skipFindMyossReleaseVersion) {
             String myossSpringBootParentReleaseVersion = MavenUtils.findReleaseVersionInNexus(restTemplate,
@@ -173,6 +186,20 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
         configuration.setAuthor(author);
         configuration.setCopyright(copyright);
         convertConfigurationArgs(configuration);
+    }
+
+    /**
+     * 获取 Java main class 文件名
+     *
+     * @return Java main class 文件名
+     */
+    public String getJavaMainClassName() {
+        List<String> collect = Stream.of(this.artifactId.split("-"))
+                .filter(StringUtils::isNotBlank)
+                .collect(Collectors.toList());
+        String transform = NameStyle.PASCAL_CASE
+                .transform(CollectionUtils.isEmpty(collect) ? this.artifactId : collect.get(0));
+        return transform + "Application";
     }
 
     /**
@@ -271,8 +298,14 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
                 getLog().info("======> skipIgnoreFile: " + targetFile.getFileName());
             } else if (templateFile.endsWith(templateSuffix)) {
                 // 模版引擎生成
-                String saveFilePath = StringUtils.removeEnd(targetFile.toString(), templateSuffix);
+                String saveFilePath;
+                if (StringUtils.endsWith(templateFile, JAVA_MAIN_CLASS_FILE)) {
+                    saveFilePath = targetFile.getParent().resolve(data.get(JAVA_MAIN_CLASS_NAME) + ".java").toString();
+                } else {
+                    saveFilePath = StringUtils.removeEnd(targetFile.toString(), templateSuffix);
+                }
                 templateEngine.writer(separator + templateFile, saveFilePath, data);
+                generateFileAfter(saveFilePath, templateFile);
             } else if (sourceContent == null) {
                 // 文件夹
                 FileUtil.createDirectories(targetFile);
@@ -281,6 +314,7 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
                 try {
                     String content = StreamUtil.copyToString(sourceContent, MyossConstants.DEFAULT_CHARSET);
                     FileUtils.writeStringToFile(targetFile.toFile(), content, MyossConstants.DEFAULT_CHARSET);
+                    generateFileAfter(targetFile.toString(), templateFile);
                 } catch (IOException e) {
                     throw new BizRuntimeException(e);
                 }
@@ -343,5 +377,14 @@ public class SpringBootSingleProjectMojo extends AbstractMojo {
                 .stream()
                 .map(entry -> StringUtils.substringAfter(entry.getKey().replace("\\", "/"), separator))
                 .collect(Collectors.toSet());
+    }
+
+    /**
+     * 生成文件后置逻辑处理，可在子类中重写
+     *
+     * @param filePath 生成文件保存目录
+     * @param templateFile 模版文件
+     */
+    public void generateFileAfter(String filePath, String templateFile) {
     }
 }
