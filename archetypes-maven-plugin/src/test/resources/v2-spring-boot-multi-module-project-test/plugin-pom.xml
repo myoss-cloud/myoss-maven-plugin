@@ -1,0 +1,51 @@
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>app.myoss.cloud.maven.plugins</groupId>
+                <artifactId>archetypes-maven-plugin</artifactId>
+                <configuration>
+                    <directory>
+                        ${basedir}/target/test-classes/unit/v2-spring-boot-multi-module-project-test/buildDirectory
+                    </directory>
+                    <groupId>app.myoss.cloud</groupId>
+                    <artifactId>v2-multi-module-demo3</artifactId>
+                    <version>1.0.0.RELEASE</version>
+                    <rootPackageName>app.myoss.cloud.demo23</rootPackageName>
+                    <author>Jerry.Chen</author>
+                    <copyright>
+                        Copyright 2018-${todayYear} https://github.com/myoss
+
+                        Licensed under the Apache License, Version 2.0 (the "License");
+                        you may not use this file except in compliance with the License.
+                        You may obtain a copy of the License at
+
+                        http://www.apache.org/licenses/LICENSE-2.0
+
+                        Unless required by applicable law or agreed to in writing, software
+                        distributed under the License is distributed on an "AS IS" BASIS,
+                        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+                        See the License for the specific language governing permissions and
+                        limitations under the License.
+                    </copyright>
+                    <modules>
+                        <module>
+                            <name>order-web</name>
+                            <moduleType>spring-boot</moduleType>
+                        </module>
+                        <module>
+                            <name>order-service</name>
+                            <moduleType>normal</moduleType>
+                        </module>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+        <!--
+        mvn -X app.myoss.cloud.maven.plugins:archetypes-maven-plugin:1.0.0:v2SpringBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/target' \
+        -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0.RELEASE \
+        -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen \
+        -DmodulesJson='[{"name":"order-web","moduleType":"spring-boot"},{"name":"order-service","moduleType":"normal"}]'
+        -->
