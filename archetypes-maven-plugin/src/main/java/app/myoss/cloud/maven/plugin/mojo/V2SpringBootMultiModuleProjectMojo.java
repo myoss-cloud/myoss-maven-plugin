@@ -42,7 +42,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Mojo(name = "v2SpringBootMultiModuleProject", requiresProject = false)
-public class V2SpringBootMultiModuleProjectMojo extends SpringBootSingleProjectMojo {
+public class V2SpringBootMultiModuleProjectMojo extends V2SpringBootSingleProjectMojo {
     /**
      * 模板文件夹名字
      */

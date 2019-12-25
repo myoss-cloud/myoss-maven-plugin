@@ -34,7 +34,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Mojo(name = "v2ShareProject", requiresProject = false)
-public class V2ShareProjectMojo extends SpringBootSingleProjectMojo {
+public class V2ShareProjectMojo extends V2SpringBootSingleProjectMojo {
     /**
      * 模板文件夹名字
      */
