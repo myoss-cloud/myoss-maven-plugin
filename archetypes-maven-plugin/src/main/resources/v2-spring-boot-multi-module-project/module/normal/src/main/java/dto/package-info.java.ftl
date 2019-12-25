@@ -18,4 +18,3 @@
  * @since ${configuration.generateDate}
  */
 package ${package}.dto;
-
