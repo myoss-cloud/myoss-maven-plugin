@@ -34,6 +34,6 @@ public class ${JAVA_MAIN_ClASS} {
      * @param args 启动参数
      */
     public static void main(String[] args) {
-        BootApplication.run(log, ${JAVA_MAIN_ClASS}.class, args);
+        BootApplication.run(log, false, ${JAVA_MAIN_ClASS}.class, args);
     }
 }
