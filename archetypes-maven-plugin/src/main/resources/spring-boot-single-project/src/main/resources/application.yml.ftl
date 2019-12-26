@@ -5,7 +5,7 @@ spring:
   main:
     banner-mode: log
   profiles:
-    active: main, ${r"${DEPLOY_ENV}"}
+    active: ${r"${DEPLOY_ENV}"}
   http:
     encoding:
       force: true
