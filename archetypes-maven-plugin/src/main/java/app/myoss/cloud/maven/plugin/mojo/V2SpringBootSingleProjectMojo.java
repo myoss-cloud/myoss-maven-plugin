@@ -93,7 +93,7 @@ public class V2SpringBootSingleProjectMojo extends AbstractMojo {
     protected Path                    rootPath;
     protected boolean                 skipFindMyossReleaseVersion = false;
     protected RestTemplate            restTemplate                = new RestTemplate();
-    protected String                  nexusRepositoryUrl          = "http://repo1.maven.org/maven2";
+    protected String                  nexusRepositoryUrl          = "https://repo1.maven.org/maven2";
 
     /**
      * 项目文件保存的目录
