@@ -13,7 +13,7 @@
 - [maven][1]
 - [the latest JAR][2]  
 
-[1]: http://repo1.maven.org/maven2/app/myoss/cloud/maven/plugins/myoss-maven-plugin/  
+[1]: https://repo1.maven.org/maven2/app/myoss/cloud/maven/plugins/myoss-maven-plugin/  
 [2]: https://search.maven.org/remote_content?g=app.myoss.cloud.maven.plugins&a=myoss-maven-plugin&v=LATEST
 
 ## Maven
