@@ -22,7 +22,7 @@
 <dependency>
     <groupId>app.myoss.cloud.maven.plugins</groupId>
     <artifactId>myoss-maven-plugin</artifactId>
-    <version>2.1.7.RELEASE</version>
+    <version>2.1.8-RC1</version>
 </dependency>
 ```
 
@@ -30,7 +30,7 @@
 <dependency>
     <groupId>app.myoss.cloud.maven.plugins</groupId>
     <artifactId>archetypes-maven-plugin</artifactId>
-    <version>2.1.7.RELEASE</version>
+    <version>2.1.8-RC1</version>
 </dependency>
 ```
 
@@ -43,7 +43,7 @@
 `Mac/Linux` 系统使用示例
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:springBootSingleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:springBootSingleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=spring-boot-single-project -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo1 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -52,7 +52,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:spring
 `Windows` 系统使用示例
 
 ```bash
-mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:springBootSingleProject ^
+mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:springBootSingleProject ^
 -Ddirectory="C:\Users\jerry\logs\archetypes-maven-plugin" ^
 -DgroupId=app.myoss.cloud -DartifactId=spring-boot-single-project -Dversion=1.0.0 ^
 -DrootPackageName=app.myoss.cloud.demo1 -Dauthor=Jerry.Chen ^
@@ -64,7 +64,7 @@ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:springBo
 `Mac/Linux` 系统使用示例
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:shareProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:shareProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=share-project -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo2 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -73,7 +73,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:shareP
 `Windows` 系统使用示例
 
 ```bash
-mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:shareProject ^
+mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:shareProject ^
 -Ddirectory="C:\Users\jerry\logs\archetypes-maven-plugin" ^
 -DgroupId=app.myoss.cloud -DartifactId=share-project -Dversion=1.0.0 ^
 -DrootPackageName=app.myoss.cloud.demo2 -Dauthor=Jerry.Chen ^
@@ -85,7 +85,7 @@ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:sharePro
 `Mac/Linux` 系统使用示例
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:springBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:springBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -95,7 +95,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:spring
 `Windows` 系统使用示例
 
 ```bash
-mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:springBootMultiModuleProject ^
+mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:springBootMultiModuleProject ^
 -Ddirectory="C:\Users\jerry\logs\archetypes-maven-plugin" ^
 -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0 ^
 -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen ^
@@ -113,7 +113,7 @@ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:springBo
 `Mac/Linux` 系统使用示例
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2SpringBootSingleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:v2SpringBootSingleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=spring-boot-single-project -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo1 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -122,7 +122,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2Spri
 `Windows` 系统使用示例
 
 ```bash
-mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2SpringBootSingleProject ^
+mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:v2SpringBootSingleProject ^
 -Ddirectory="C:\Users\jerry\logs\archetypes-maven-plugin" ^
 -DgroupId=app.myoss.cloud -DartifactId=spring-boot-single-project -Dversion=1.0.0 ^
 -DrootPackageName=app.myoss.cloud.demo1 -Dauthor=Jerry.Chen ^
@@ -134,7 +134,7 @@ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2Spring
 `Mac/Linux` 系统使用示例
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2ShareProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:v2ShareProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=share-project -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo2 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -143,7 +143,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2Shar
 `Windows` 系统使用示例
 
 ```bash
-mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2ShareProject ^
+mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:v2ShareProject ^
 -Ddirectory="C:\Users\jerry\logs\archetypes-maven-plugin" ^
 -DgroupId=app.myoss.cloud -DartifactId=share-project -Dversion=1.0.0 ^
 -DrootPackageName=app.myoss.cloud.demo2 -Dauthor=Jerry.Chen ^
@@ -155,7 +155,7 @@ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2ShareP
 `Mac/Linux` 系统使用示例
 
 ```bash
-$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2SpringBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
+$ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:v2SpringBootMultiModuleProject -Ddirectory='/Users/jerry/workspaces/github/myoss/myoss-java/myoss-maven-plugin/archetypes-maven-plugin/target' \
 -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0.RELEASE \
 -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen \
 -DconfigurationJson='{"useMybatis":true,"properties":{"自定义属性a":"自定义属性a的值"}}'
@@ -165,7 +165,7 @@ $ mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2Spri
 `Windows` 系统使用示例
 
 ```bash
-mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.7.RELEASE:v2SpringBootMultiModuleProject ^
+mvn app.myoss.cloud.maven.plugins:archetypes-maven-plugin:2.1.8-RC1:v2SpringBootMultiModuleProject ^
 -Ddirectory="C:\Users\jerry\logs\archetypes-maven-plugin" ^
 -DgroupId=app.myoss.cloud -DartifactId=multi-module-demo3 -Dversion=1.0.0 ^
 -DrootPackageName=app.myoss.cloud.demo3 -Dauthor=Jerry.Chen ^
