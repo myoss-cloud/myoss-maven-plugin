@@ -38,12 +38,11 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
-import com.alibaba.fastjson.JSON;
-
 import app.myoss.cloud.core.constants.MyossConstants;
 import app.myoss.cloud.core.exception.BizRuntimeException;
 import app.myoss.cloud.core.lang.io.FileUtil;
 import app.myoss.cloud.core.lang.io.StreamUtil;
+import app.myoss.cloud.core.lang.json.JsonApi;
 import app.myoss.cloud.core.utils.NameStyle;
 import app.myoss.cloud.maven.plugin.config.Configuration;
 import app.myoss.cloud.maven.plugin.template.TemplateEngine;
@@ -165,7 +164,7 @@ public class V2SpringBootSingleProjectMojo extends AbstractMojo {
         rootPath = directory.toPath().resolve(artifactId);
 
         if (StringUtils.isNotBlank(configurationJson)) {
-            configuration = JSON.parseObject(configurationJson, Configuration.class);
+            configuration = JsonApi.fromJson(configurationJson, Configuration.class);
         }
         if (configuration == null) {
             configuration = new Configuration();

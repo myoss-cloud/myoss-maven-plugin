@@ -26,9 +26,8 @@ import java.util.Map;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import com.alibaba.fastjson.JSON;
-
 import app.myoss.cloud.core.lang.io.FileUtil;
+import app.myoss.cloud.core.lang.json.JsonApi;
 import app.myoss.cloud.maven.plugin.config.Module;
 import lombok.Getter;
 import lombok.Setter;
@@ -90,7 +89,7 @@ public class V2SpringBootMultiModuleProjectMojo extends V2SpringBootSingleProjec
     public void initConfiguration() {
         super.initConfiguration();
         if (this.modulesJson != null) {
-            List<Module> modules = JSON.parseArray(modulesJson, Module.class);
+            List<Module> modules = JsonApi.fromJsonArray(modulesJson, Module.class);
             if (this.modules != null) {
                 this.modules.addAll(modules);
             } else {
