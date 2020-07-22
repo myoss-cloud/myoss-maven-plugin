@@ -1,15 +1,15 @@
 server:
   port: 8080
+  servlet:
+    encoding:
+      force: true
+      enabled: true
 
 spring:
   main:
     banner-mode: log
   profiles:
     active: ${r"${DEPLOY_ENV}"}
-  http:
-    encoding:
-      force: true
-      enabled: true
 
 <#if configuration.useMybatis>
 mybatis:
