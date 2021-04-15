@@ -8,8 +8,6 @@ server:
 spring:
   main:
     banner-mode: log
-  profiles:
-    active: ${r"${DEPLOY_ENV}"}
 
 <#if configuration.useMybatis>
 mybatis:
